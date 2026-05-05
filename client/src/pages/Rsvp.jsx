@@ -1,7 +1,14 @@
+import { useContext } from 'react';
+import GuestTable from '../components/GuestTable';
+import { LanguageContext } from '../contexts/LanguageContext';
+
 export default function Rsvp() {
+    const { lang } = useContext(LanguageContext);
+
     return (
-        <main>
-            <h1>RSVP</h1>
-        </main>
-    )
+        <article>
+            <h1>{lang === 'es' ? 'RSVP - Lista de Invitados' : 'RSVP - Guest List'}</h1>
+            <GuestTable />
+        </article>
+    );
 }
