@@ -1,6 +1,7 @@
 // api/guests.js
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+import sqlite3 from 'sqlite3';
+
+const sqlite = sqlite3.verbose();
 
 // Use in-memory database for Vercel (no persistent storage across requests)
 // For production, consider using a cloud database
