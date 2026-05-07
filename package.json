@@ -1,0 +1,19 @@
+{
+  "name": "planner",
+  "version": "1.0.0",
+  "description": "Guest planner and RSVP management system",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
+    "build": "cd client && npm run build",
+    "preview": "cd client && npm run preview"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

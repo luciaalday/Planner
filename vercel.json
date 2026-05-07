@@ -1,0 +1,23 @@
+{
+  "buildCommand": "cd client && npm run build",
+  "outputDirectory": "client/dist",
+  "env": {
+    "VITE_API_URL": "@api_url"
+  },
+  "functions": {
+    "api/guests.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "^/api/guests.*",
+      "dest": "/api/guests.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

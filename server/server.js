@@ -35,10 +35,10 @@ app.get('/api/guests/:id', (req, res) => {
 
 // API: Add a guest
 app.post('/api/guests', (req, res) => {
-    const { name, email, rsvp, attending, meal, spanish, group } = req.body;
-    const sql = `INSERT INTO guests (name, email, rsvp, attending, meal, spanish, [group])
-                 VALUES (?, ?, ?, ?, ?, ?, ?)`;
-    const params = [name, email, rsvp, attending, meal, spanish, group];
+    const { firstname, lastname, email, address, rsvp, attending, meal, group, plus_one, note } = req.body;
+    const sql = `INSERT INTO guests (firstname, lastname, email, address, rsvp, attending, meal, [group], plus_one, note)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+    const params = [firstname, lastname, email, address, rsvp, attending, meal, group, plus_one, note];
 
     db.run(sql, params, function (err) {
         if (err) return res.status(500).json({ error: err.message });
@@ -49,10 +49,10 @@ app.post('/api/guests', (req, res) => {
 // API: Update guest (full update)
 app.put('/api/guests/:id', (req, res) => {
     const { id } = req.params;
-    const { name, email, rsvp, attending, meal, spanish, group } = req.body;
-    const sql = `UPDATE guests SET name = ?, email = ?, rsvp = ?, attending = ?,
-                 meal = ?, spanish = ?, [group] = ? WHERE id = ?`;
-    const params = [name, email, rsvp, attending, meal, spanish, group, id];
+    const { firstname, lastname, email, address, rsvp, attending, meal, group, plus_one, note } = req.body;
+    const sql = `UPDATE guests SET firstname = ?, lastname = ?, email = ?, address = ?, rsvp = ?, attending = ?,
+                 meal = ?, [group] = ?, plus_one = ?, note = ? WHERE id = ?`;
+    const params = [firstname, lastname, email, address, rsvp, attending, meal, group, plus_one, note, id];
 
     db.run(sql, params, function (err) {
         if (err) return res.status(500).json({ error: err.message });

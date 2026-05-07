@@ -1,0 +1,9 @@
+{
+  "name": "planner-api",
+  "version": "1.0.0",
+  "description": "Vercel serverless API for guest planner",
+  "type": "module",
+  "dependencies": {
+    "sqlite3": "^6.0.1"
+  }
+}

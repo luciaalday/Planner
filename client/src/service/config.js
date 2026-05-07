@@ -1,5 +1,5 @@
-// API configuration for connecting to the server
-const API_BASE_URL = 'http://localhost:5000/api';
+// client/src/service/config.js
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Helper function for making API requests
 const apiRequest = async (endpoint, options = {}) => {

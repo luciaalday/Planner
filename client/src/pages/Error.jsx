@@ -1,14 +1,15 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { LanguageContext } from '../contexts/LanguageContext'
 
-export default function Error({ code, url = null }) {
+export default function Error({ code, url = null, link=null, redirect=null }) {
     const { lang } = useContext(LanguageContext);
 
     const message = {
         307: 'Page has temporarily been moved to',
         308: 'Page has permanently been moved to',
         400: 'Request cannot be filled due to bad syntax',
-        401: 'Please sign in, then reattempt to access this page',
+        401: 'Authentication required',
         402: 'Payment required',
         403: 'Access denied',
         404: 'Page not found',
@@ -30,7 +31,8 @@ export default function Error({ code, url = null }) {
         <article className='error'>
             <h1>Error {code}</h1>
             <p>{lang === 'es' ? mensaje[code] : message[code]}</p>
-            {url && <a href={url}>{url}</a>}
+            {url && <a href={url}>{redirect??url}</a>}
+            {link && <Link to={link}>{redirect??link}</Link>}
         </article>
     );
 }
