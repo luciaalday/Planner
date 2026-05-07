@@ -14,6 +14,9 @@
       "dest": "/api/guests.js"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
