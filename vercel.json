@@ -1,9 +1,6 @@
 {
   "buildCommand": "cd client && npm run build",
   "outputDirectory": "client/dist",
-  "env": {
-    "VITE_API_URL": "@api_url"
-  },
   "functions": {
     "api/guests.js": {
       "memory": 1024,
