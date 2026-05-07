@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Guest planner and RSVP management system",
   "private": true,
+  "workspaces": [
+    "client",
+    "api",
+    "server"
+  ],
   "scripts": {
     "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
     "build": "cd client && npm run build",
