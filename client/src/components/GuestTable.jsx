@@ -1,12 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { api } from '../service/config';
-import { LanguageContext } from '../contexts/LanguageContext';
 
 export default function GuestTable() {
     const [guests, setGuests] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { lang } = useContext(LanguageContext);
     
     useEffect(() => {
         const fetchGuests = async () => {
@@ -16,9 +14,7 @@ export default function GuestTable() {
                 setGuests(data);
                 setError(null);
             } catch (err) {
-                // Capture current language at time of error
-                const currentLang = lang;
-                const errorMessage = currentLang === 'es' ? 'Error al cargar invitados' : 'Error loading guests';
+                const errorMessage = 'Error loading guests';
                 setError(errorMessage);
                 console.error('Error fetching guests:', err);
             } finally {
@@ -27,64 +23,55 @@ export default function GuestTable() {
         };
 
         fetchGuests();
-    }, [lang]);
+    }, []);
 
     const formatBoolean = (value) => {
-        if (lang === 'es') {
-            return value ? 'Sí' : 'No';
-        }
         return value ? 'Yes' : 'No';
     };
 
     const getMealText = (meal) => {
         if (!meal) return '';
         const meals = {
-            1: lang === 'es' ? 'Pollo' : 'Chicken',
-            2: lang === 'es' ? 'Pescado' : 'Fish',
-            3: lang === 'es' ? 'Vegetariano' : 'Vegetarian',
+            1: 'Chicken',
+            2: 'Fish',
+            3: 'Vegetarian',
         };
         return meals[meal] || meal;
     };
 
     if (loading) {
         return (
-            <div className="loading">
-                {lang === 'es' ? 'Cargando invitados...' : 'Loading guests...'}
-            </div>
+            <div className="loading">Loading guests...</div>
         );
     }
 
     if (error) {
         return (
-            <div className="error">
-                {error}
-            </div>
+            <div className="error">{error}</div>
         );
     }
 
     return (
         <div className="guest-table-container">
-            <h2>{lang === 'es' ? 'Lista de Invitados' : 'Guest List'}</h2>
+            <h2>Guest List</h2>
             <div className="table-wrapper">
                 <table className="guest-table">
                     <thead>
                         <tr>
-                            <th>{lang === 'es' ? 'ID' : 'ID'}</th>
-                            <th>{lang === 'es' ? 'Nombre' : 'Name'}</th>
-                            <th>{lang === 'es' ? 'Email' : 'Email'}</th>
-                            <th>{lang === 'es' ? 'RSVP' : 'RSVP'}</th>
-                            <th>{lang === 'es' ? 'Asistirá' : 'Attending'}</th>
-                            <th>{lang === 'es' ? 'Comida' : 'Meal'}</th>
-                            <th>{lang === 'es' ? 'Español' : 'Spanish'}</th>
-                            <th>{lang === 'es' ? 'Grupo' : 'Group'}</th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>RSVP</th>
+                            <th>Attending</th>
+                            <th>Meal</th>
+                            <th>Spanish</th>
+                            <th>Group</th>
                         </tr>
                     </thead>
                     <tbody>
                         {guests.length === 0 ? (
                             <tr>
-                                <td colSpan="8" className="no-guests">
-                                    {lang === 'es' ? 'No hay invitados registrados' : 'No guests registered'}
-                                </td>
+                                <td colSpan="8" className="no-guests">No guests registered</td>
                             </tr>
                         ) : (
                             guests.map((guest) => (
@@ -103,12 +90,7 @@ export default function GuestTable() {
                     </tbody>
                 </table>
             </div>
-            <div className="table-info">
-                {lang === 'es'
-                    ? `Total de invitados: ${guests.length}`
-                    : `Total guests: ${guests.length}`
-                }
-            </div>
+            <div className="table-info">Total guests: ${guests.length}</div>
         </div>
     );
 }
