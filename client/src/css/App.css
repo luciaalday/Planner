@@ -1,0 +1,5 @@
+@import url(./defaults.css);
+
+.styles li {
+  font-size: 30px;
+}

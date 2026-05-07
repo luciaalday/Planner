@@ -2,7 +2,7 @@ import GuestTable from '../components/GuestTable'
 
 export default function Dashboard() {
     return (
-        <article>
+        <article className='dashboard'>
             <h1>Dashboard</h1>
             <GuestTable />
         </article>

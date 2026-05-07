@@ -6,7 +6,7 @@ export default function Rsvp() {
     const { lang } = useContext(LanguageContext);
 
     return (
-        <article>
+        <article className='rsvp'>
             <h1>{lang === 'es' ? 'RSVP - Lista de Invitados' : 'RSVP - Guest List'}</h1>
             <GuestTable />
         </article>

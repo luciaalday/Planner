@@ -1,6 +1,6 @@
 html, body {
     margin: 0;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: "Tangerine";
 }
 
 main {
@@ -15,10 +15,14 @@ main {
 article {
     flex: 1;
     margin: auto;
+    width: 100vw;
+    text-align: center;
+    background-size:cover;
+    background-position: center;
 }
 
 nav {
-    background-color: var(--mid-blue);
+    background: linear-gradient(to bottom, var(--mid-light-blue), var(--light-blue));
     position: sticky;
     top: 0;
     padding: 10px;
@@ -60,4 +64,25 @@ button:active {
 .icon:hover {
     background-color: transparent;
     color: var(--mid-light-blue);
+}
+
+.dashboard {
+    background-image:
+        linear-gradient(to bottom, #c1d6fff0, #709bf0c0, #709bf0d0),
+        url('../assets/hydrangea-sunrays.jpg');
+    }
+.rsvp {
+    background-image:
+    linear-gradient(to bottom, var(--white-blue), #3661b7a0),
+    url('../assets/blue-hydrangea-above.jpg');
+}
+.styles {
+    background-image:
+        linear-gradient(to bottom, #c1d6fff0, #709bf0c0, #709bf0d0),
+        url('../assets/tucson-downtown.jpg');
+}
+.home {
+    background-image:
+        linear-gradient(to bottom, #c1d6fff0, #709bff00),
+        url('../assets/tucson-twilight.jpg');
 }

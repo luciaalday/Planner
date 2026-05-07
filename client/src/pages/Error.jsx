@@ -27,7 +27,7 @@ export default function Error({ code, url = null }) {
     };
 
     return (
-        <article>
+        <article className='error'>
             <h1>Error {code}</h1>
             <p>{lang === 'es' ? mensaje[code] : message[code]}</p>
             {url && <a href={url}>{url}</a>}

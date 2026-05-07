@@ -9,7 +9,7 @@ export default function Login() {
     }
 
     return (
-        <article>
+        <article className='login'>
             <h1>Log in to manage and view responses</h1>
             <button onClick={handleLogin}>Sign in</button>
         </article>
