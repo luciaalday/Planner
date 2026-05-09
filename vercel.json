@@ -10,8 +10,8 @@
   },
   "routes": [
     {
-      "src": "^/api/guests.*",
-      "dest": "/api/guests.js"
+      "src": "^/api/(.*)",
+      "dest": "/api/$1"
     },
     {
       "handle": "filesystem"
