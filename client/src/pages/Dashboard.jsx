@@ -51,7 +51,7 @@ export default function Dashboard() {
     const handleAddGuest = async (e) => {
         e.preventDefault();
         try {
-            await api.addGuest(newGuest);
+            await api.createGuest(newGuest);
             setNewGuest({
                 firstname: '',
                 lastname: '',
