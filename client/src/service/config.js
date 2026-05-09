@@ -1,62 +1,59 @@
-// client/src/service/config.js
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Client-side API configuration
+// Note: Turso database client runs on the server (api/guests.js)
+// This file configures the client-side API calls to the server
 
-// Helper function for making API requests
-const apiRequest = async (endpoint, options = {}) => {
-    const url = `${API_BASE_URL}${endpoint}`;
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
-    const defaultOptions = {
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    };
-
-    const config = { ...defaultOptions, ...options };
-
-    try {
-        const response = await fetch(url, config);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('API request failed:', error);
-        throw error;
-    }
-};
-
-// API endpoints
 export const api = {
-    // Get all guests
-    getGuests: () => apiRequest('/guests'),
+  async getGuests() {
+    const response = await fetch(`${API_BASE_URL}/guests`);
+    if (!response.ok) throw new Error('Failed to fetch guests');
+    return response.json();
+  },
 
-    // Get single guest
-    getGuest: (id) => apiRequest(`/guests/${id}`),
+  async getGuest(id) {
+    const response = await fetch(`${API_BASE_URL}/guests/${id}`);
+    if (!response.ok) throw new Error('Failed to fetch guest');
+    return response.json();
+  },
 
-    // Add a new guest
-    addGuest: (guestData) => apiRequest('/guests', {
-        method: 'POST',
-        body: JSON.stringify(guestData),
-    }),
+  async createGuest(data) {
+    const response = await fetch(`${API_BASE_URL}/guests`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to create guest');
+    return response.json();
+  },
 
-    // Update guest (full update)
-    updateGuest: (id, guestData) => apiRequest(`/guests/${id}`, {
-        method: 'PUT',
-        body: JSON.stringify(guestData),
-    }),
+  async updateGuest(id, data) {
+    const response = await fetch(`${API_BASE_URL}/guests/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to update guest');
+    return response.json();
+  },
 
-    // Partial update guest
-    patchGuest: (id, partialData) => apiRequest(`/guests/${id}`, {
-        method: 'PATCH',
-        body: JSON.stringify(partialData),
-    }),
+  async patchGuest(id, data) {
+    const response = await fetch(`${API_BASE_URL}/guests/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to patch guest');
+    return response.json();
+  },
 
-    // Delete guest
-    deleteGuest: (id) => apiRequest(`/guests/${id}`, {
-        method: 'DELETE',
-    }),
+  async deleteGuest(id) {
+    const response = await fetch(`${API_BASE_URL}/guests/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) throw new Error('Failed to delete guest');
+    return response.json();
+  },
 };
 
-export { API_BASE_URL };
+export default api;

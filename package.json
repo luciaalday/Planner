@@ -10,13 +10,14 @@
   ],
   "scripts": {
     "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
+    "dev:watch": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
     "build": "cd client && npm run build",
     "preview": "cd client && npm run preview"
   },
   "dependencies": {
+    "@libsql/client": "^0.5.6",
     "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "sqlite3": "^6.0.1"
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
