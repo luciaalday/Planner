@@ -2,7 +2,7 @@
 // Note: Turso database client runs on the server (api/guests.js)
 // This file configures the client-side API calls to the server
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_BASE_URL = '/api';
 
 export const api = {
   async getGuests() {

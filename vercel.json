@@ -10,7 +10,11 @@
   },
   "routes": [
     {
-      "src": "^/api/guests(.*)",
+      "src": "^/api/guests$",
+      "dest": "/api/guests.js"
+    },
+    {
+      "src": "^/api/guests/(.*)$",
       "dest": "/api/guests.js"
     },
     {
