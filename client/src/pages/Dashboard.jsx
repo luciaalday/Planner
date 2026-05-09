@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import GuestTable from '../components/GuestTable';
 import Error from './Error';
-import { api } from '../service/config';
+import { api } from '../server/config';
 
 export default function Dashboard() {
     const [loggedin, setLoggedin] = useState(() => {

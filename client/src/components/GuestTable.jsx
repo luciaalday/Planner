@@ -1,6 +1,6 @@
 // client/src/components/GuestTable.jsx
 import { useState } from 'react';
-import { api } from '../service/config';
+import { api } from '../server/config';
 
 export default function GuestTable({ guests, loading, onRefresh }) {
     const [error, setError] = useState(null);
