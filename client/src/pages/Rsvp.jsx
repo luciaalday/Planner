@@ -7,8 +7,7 @@ export default function Rsvp() {
 
     return (
         <article className='rsvp'>
-            <h1>{lang === 'es' ? 'RSVP - Lista de Invitados' : 'RSVP - Guest List'}</h1>
-            <GuestTable />
+            
         </article>
     );
 }

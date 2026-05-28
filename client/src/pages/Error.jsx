@@ -28,7 +28,7 @@ export default function Error({ code, url = null, link=null, redirect=null }) {
     };
 
     return (
-        <article className='error'>
+        <article className='error-page'>
             <h1>Error {code}</h1>
             <p>{lang === 'es' ? mensaje[code] : message[code]}</p>
             {url && <a href={url}>{redirect??url}</a>}

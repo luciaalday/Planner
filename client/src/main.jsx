@@ -5,6 +5,7 @@ import App from './App.jsx'
 import './css/index.css'
 import './css/App.css'
 import './css/defaults.css'
+import './css/dashboard.css'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

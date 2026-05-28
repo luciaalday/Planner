@@ -1,0 +1,65 @@
+@import './defaults.css';
+
+.guest-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.guest-group-tile {
+    border: 1px solid white;
+    box-shadow: 0 0 5px var(--white-blue);
+    text-align: left;
+    border-radius: 10px;
+    background-color: var(--light-blue);
+    overflow: hidden;
+}
+.guest-group-tile h3 {
+    margin: 0;
+    background-color: #9eb5ff;
+    padding: 10px;
+}
+
+.guest-tile {
+    margin: auto 15px;
+}
+
+.message {
+    position: absolute;
+    bottom: 5px;
+    margin: auto;
+    width: 90vw;
+    border-radius: 10px;
+}
+
+.add-guest {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: #fff2;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.add-guest-button {
+    display: flex;
+    justify-content: stretch;
+}
+
+.pair {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
